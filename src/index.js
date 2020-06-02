@@ -1,1 +1,2 @@
-console.log("hello world");
+import text from "./text";
+console.log(`hello ${text()}`);
