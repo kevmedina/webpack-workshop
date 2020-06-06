@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { hot } from 'react-hot-loader';
+import styled from 'styled-components';
 
-class App extends React.Component {
-  state = { counter: 0 };
+const Text = styled.p`
+  color: ${(props) => (props.color.counter < 2 ? 'red' : 'blue')};
+`;
 
-  render() {
-    return (
-      <div>
-        <p>Counter: {this.state.counter}</p>
-        <button onClick={() => this.setState((prev) => ({ counter: prev.counter + 1 }))}>+</button>
-      </div>
-    );
-  }
-}
+const App = () => {
+  const [state, setState] = useState({ counter: 0 });
+
+  return (
+    <div>
+      <Text color={state}>Counter: {state.counter}</Text>
+      <button onClick={() => setState((prev) => ({ counter: prev.counter + 1 }))}>+</button>
+    </div>
+  );
+};
 
 export default hot(module)(App);
